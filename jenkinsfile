@@ -1,21 +1,38 @@
-pipeline{
-  agent any
-  stages{
-    stage("build"){
-      steps{
-        echo 'Building the application'
+pipeline {
+    agent any
+    stages {
+        stage("build") {
+            steps {
+                echo 'Building the application'
+                // Ajoutez ici les étapes spécifiques de construction de votre application
+            }
+        }
+        stage("test") {
+            steps {
+                echo 'Testing the application'
+                // Ajoutez ici les étapes spécifiques de test de votre application
+            }
+        }
+        stage("deploy") {
+            steps {
+                echo 'Deploying the application'
+                // Ajoutez ici les étapes spécifiques de déploiement de votre application
+            }
         }
     }
-    stage("test"){
-      steps{
-        echo 'Testing the application'
+    // Ajoutez une section pour la gestion des erreurs ou des notifications
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+            // Ajoutez ici des étapes à exécuter en cas de succès du pipeline
         }
-    }
-    stage("deploy"){
-      steps{
-        echo 'Deploying the application'
+        failure {
+            echo 'Pipeline execution failed!'
+            // Ajoutez ici des étapes à exécuter en cas d'échec du pipeline
+        }
+        always {
+            echo 'Pipeline execution completed!'
+            // Ajoutez ici des étapes à exécuter toujours, que le pipeline réussisse ou échoue
         }
     }
 }
-}
-    
